@@ -28,6 +28,10 @@ namespace LR_1
                 Console.WriteLine($"Ошибка: введите целое число от {min} до {max}.");
             }
         }
+        static bool IsPeakHour(int hour)
+        {
+            return (hour >= 12 && hour < 14) || (hour >= 18 && hour < 20);
+        }
         static void Main(string[] args)
         {
             double orderCost = InputNonNegativeDouble("Введите стоимость заказа (руб.): ");
