@@ -18,10 +18,21 @@ namespace LR_1
                 Console.WriteLine("Ошибка: введите число не меньше нуля.");
             }
         }
+        static int InputIntInRange(string prompt, int min, int max)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                if (int.TryParse(Console.ReadLine(), out int value) && value >= min && value <= max)
+                    return value;
+                Console.WriteLine($"Ошибка: введите целое число от {min} до {max}.");
+            }
+        }
         static void Main(string[] args)
         {
             double orderCost = InputNonNegativeDouble("Введите стоимость заказа (руб.): ");
             double distance = InputNonNegativeDouble("Введите расстояние доставки (км): ");
+            int hour = InputIntInRange("Введите время заказа (час): ", 0, 23);
         }
     }
 }
