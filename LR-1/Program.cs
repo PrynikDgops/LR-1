@@ -21,6 +21,7 @@ namespace LR_1
         static void Main(string[] args)
         {
             double orderCost = InputNonNegativeDouble("Введите стоимость заказа (руб.): ");
+            double distance = InputNonNegativeDouble("Введите расстояние доставки (км): ");
         }
     }
 }
