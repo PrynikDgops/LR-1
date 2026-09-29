@@ -32,11 +32,24 @@ namespace LR_1
         {
             return (hour >= 12 && hour < 14) || (hour >= 18 && hour < 20);
         }
+        static double CalculateDeliveryCost(double orderCost, double distance, int hour)
+        {
+            if (orderCost >= 2000)
+                return 0;
+
+            double cost = distance <= 3 ? 150 : 150 + (distance - 3) * 50;
+
+            if (IsPeakHour(hour))
+                cost *= 1.3;
+
+            return Math.Round(cost, 2);
+        }
         static void Main(string[] args)
         {
             double orderCost = InputNonNegativeDouble("Введите стоимость заказа (руб.): ");
             double distance = InputNonNegativeDouble("Введите расстояние доставки (км): ");
             int hour = InputIntInRange("Введите время заказа (час): ", 0, 23);
+            double deliveryCost = CalculateDeliveryCost(orderCost, distance, hour);
         }
     }
 }
