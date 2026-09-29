@@ -44,12 +44,20 @@ namespace LR_1
 
             return Math.Round(cost, 2);
         }
+        static void PrintResult(double deliveryCost, double orderCost)
+        {
+            Console.WriteLine($"Стоимость доставки: {deliveryCost} руб.");
+            Console.WriteLine($"Итого к оплате: {Math.Round(orderCost + deliveryCost, 2)} руб.");
+        }
         static void Main(string[] args)
         {
             double orderCost = InputNonNegativeDouble("Введите стоимость заказа (руб.): ");
             double distance = InputNonNegativeDouble("Введите расстояние доставки (км): ");
             int hour = InputIntInRange("Введите время заказа (час): ", 0, 23);
+
             double deliveryCost = CalculateDeliveryCost(orderCost, distance, hour);
+
+            PrintResult(deliveryCost, orderCost);
         }
     }
 }
